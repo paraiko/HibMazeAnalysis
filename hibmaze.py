@@ -13,6 +13,10 @@ def decbin(DecNum):
 	return Bin
 #Finished defining the decbin function
 
+binsize = 120 #(10 min)
+OutFileName = 'output_unit0_' + str(binsize) + '.agr' 
+OutFile = open(OutFileName, 'w')
+
 ###############
 ###  read data from input file and store in list for further processing ###
 
@@ -84,9 +88,10 @@ for file in os.listdir("."):
 	###############
 	###  aggregate over specified binsize (in sec) and output in new file ###
 
-	binsize = 120 #(10 min)
+	
 	nrbins = int(86400 / binsize)
 	binnr = 0
+	binsize = 120
 
 	#get the date from the filename and convert
 	datestr = InFileName[0:8]
@@ -160,17 +165,17 @@ for file in os.listdir("."):
 	# sum the 17 channels of 1 maze (frst maze starts at channel 0 2nd maze at channgel 24
 
 
-	OutFileName = InFileName + '_' + str(binsize) + '.agr' 
-	OutFile = open(OutFileName, 'w')
+	#OutFileName = InFileName + '_' + str(binsize) + '.agr' 
+	#OutFile = open(OutFileName, 'w')
 	#loop through each line of the file to write it to OutFile2:
 	for bin in agr_day:
-		OutFile.write("%s," % bin[0])
+		OutFile.write("%s" % bin[0])
 		for ch in bin[1]:
-			OutFile.write("%s," % ch)
+			OutFile.write(",%s" % ch)
 		OutFile.write("\n")	
 		
 		
-	print "Output printed to " + OutFileName
+	print "Output of " + InFileName + " printed to " + OutFileName
 
 	#OutFile2.write(DatumTijd + '\t' + ListBinary + '\n')
 	#However it does not work: TypeError: can only concatenate list (not "str") to list
@@ -181,3 +186,4 @@ for file in os.listdir("."):
 	#Datumtijd = Result.group(1)
 	#Binaries = list(Result.group(3))
 
+OutFile.close()
