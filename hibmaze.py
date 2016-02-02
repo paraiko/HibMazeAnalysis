@@ -134,7 +134,7 @@ for file in os.listdir("."):
 				eventt = time.strptime(day[ev][0],"%Y%m%d%H%M%S") 
 				evsec = time.mktime(eventt)
 		
-		if evsec > binend:
+		if evsec >= binend:
 			#write the current bin
 			agr_day.append(bin)
 			binstart += binsize
@@ -145,7 +145,7 @@ for file in os.listdir("."):
 			bin.append(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(binend)))
 			bin.append(ech)
 			
-		elif evsec > binstart and evsec <= binend: 
+		elif evsec >= binstart and evsec < binend: 
 			getNewEv = True
 			#add the existing channel list with the values in the current events.
 			bin[1] = map(add, bin[1], day[ev][2])
@@ -157,7 +157,7 @@ for file in os.listdir("."):
 			agr_day.append(bin)
 			binstart += binsize
 			binend += binsize
-	
+	print len(agr_day)
 	
 	#print agr_day
 
