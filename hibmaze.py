@@ -60,7 +60,7 @@ for file in sorted(os.listdir(".")):
 		channel = list()
 		# for each character in col[1] (i) in range 0-47,
 		# append the integer of it to the list 'channel'
-		for i in range(0,47):
+		for i in range(0,48):
 			#ch = int(col[1][i])
 			ch = int(binstring[i])
 			if ch > 0:
@@ -103,7 +103,7 @@ for file in sorted(os.listdir(".")):
 
 	#create list with 48 empty channels for use later
 	ech = list()
-	for i in range(0,47):
+	for i in range(0,48):
 		ech.append(0)
 
 	# create new array for aggregated data	
