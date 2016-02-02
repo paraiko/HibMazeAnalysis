@@ -20,7 +20,7 @@ OutFile = open(OutFileName, 'w')
 ###############
 ###  read data from input file and store in list for further processing ###
 
-for file in os.listdir("."):
+for file in sorted(os.listdir(".")):
     if file.endswith(".txt"):
 	#Define file name and give a name to the output file
 	InFileName = file # change a later stage to input from commandline or directory loop (sys.argv[1])
