@@ -164,7 +164,12 @@ for file in os.listdir("."):
 	OutFile = open(OutFileName, 'w')
 	#loop through each line of the file to write it to OutFile2:
 	for bin in agr_day:
-		OutFile.write("%s\n" % bin)
+		OutFile.write("%s," % bin[0])
+		for ch in bin[1]:
+			OutFile.write("%s," % ch)
+		OutFile.write("\n")	
+		
+		
 	print "Output printed to " + OutFileName
 
 	#OutFile2.write(DatumTijd + '\t' + ListBinary + '\n')
